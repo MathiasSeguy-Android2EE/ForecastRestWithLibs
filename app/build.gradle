@@ -1,20 +1,31 @@
-apply plugin: 'com.android.application'
+
+apply plugin: 'com.android.application'//'com.android.application' //'com.android.library'
 /**
  * Our variables definition for the build script
  */
+apply from: 'project_reference.gradle'
 apply from: 'gradle/var_definition.gradle'
+/**
+ * Kotlin plugins
+ */
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+/**
+ * For Fabrics
+ * //TODO find a way to include Firebase and crashlytics
+ */
+//apply plugin: 'io.fabric'
+
 /**
  * For JAvaCOdeCOverage
  */
 apply plugin: 'jacoco'
 /**
- * For Fabrics
- */
-apply plugin: 'io.fabric'
-/**
  * Our file to enable code coverage using JAvaCOdeCOverage
  */
 apply from: 'gradle/toolsReporter/jacoco.gradle'
+
 /**
  * Used to deploy on Nexus our apk
  */
@@ -23,43 +34,60 @@ apply plugin: 'maven'
  * This plugin provides a task to generate a HTML license report based on the configuration
  * You can find the plugin project here :https://github.com/cookpad/license-tools-plugin
  */
-//apply plugin: 'com.cookpad.android.licensetools' TODO
+apply plugin: 'com.cookpad.android.licensetools'
 
 android {
-    compileSdkVersion project.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.android2ee.formation.restservice.sax.forecastyahoo"
-        minSdkVersion project.minSdkVersion
-        targetSdkVersion project.targetSdkVersion
+        compileSdkVersion project.compileSdk
+        applicationId project.applicationId
+        minSdkVersion project.minSdk
+        targetSdkVersion project.targetSdk
         versionCode project.versionCode
         versionName project.versionName
         //if you want your test to be found using JUnit4
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = project.useSupportLibVectorDrawable
+         //use Dart and Henson
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ['dart.henson.package': 'org.kamereon.service.henson']
+                ['room.schemaLocation': "$projectDir/schemas"]
+            }
+        }
+        //Manage Screen orientation for all Activities
+        //By default all set to "unspecified" , exceptional cases should be set in manifest.
+        manifestPlaceholders = [screenOrientation: "portrait", configChanges: "orientation"]
+
+        println "the default config to be uploaded to " + android.defaultPublishConfig
+        //Enable MultiDex
+        multiDexEnabled true
     }
 
     /***********************************************************
      *  Defining and Loading Properties
      **********************************************************/
     apply from: 'gradle/load_accounts.gradle'
-    /***********************************************************
-     *  Signing
-     **********************************************************/
-    signingConfigs {
-        debug {
-            storeFile project.ext.JKSFile
-            storePassword project.ext.JKSPassword
-            keyAlias project.ext.JKSKeyAlias
-            keyPassword project.ext.JKSKeyPassword
-        }
-        release {
-            storeFile project.ext.JKSFile_Release
-            storePassword project.ext.JKSPassword_Release
-            keyAlias project.ext.JKSKeyAlias_Release
-            keyPassword project.ext.JKSKeyPassword_Release
-        }
-    }
+
+	/***********************************************************
+	 *  Signing
+	 **********************************************************/
+	apply from: 'gradle/properties/legacy_accounts.gradle'
+	signingConfigs {
+	//TODO manage your signin configuration you have switched 
+		 debug{
+			 storeFile project.ext.JKSFile_debug
+			 storePassword project.ext.JKSPassword_debug
+			 keyAlias project.ext.JKSKeyAlias_debug
+			 keyPassword project.ext.JKSKeyPassword_debug
+		}
+		 release{
+			 storeFile project.ext.JKSFile_release
+			 storePassword project.ext.JKSPassword_release
+			 keyAlias project.ext.JKSKeyAlias_release
+			 keyPassword project.ext.JKSKeyPassword_release
+		}
+	}
 
     /***********************************************************
      *  Default values for all variants
@@ -105,10 +133,19 @@ android {
      */
     lintOptions {
         abortOnError false
+        //runtime rules
+        warningsAsErrors true
+        //reporting
+        htmlReport true
     }
     /***********************************************************
      *  Managing flavors
      **********************************************************/
+     configurations.all {
+        resolutionStrategy.force "junit:junit:${junit_junit_Version}"
+        resolutionStrategy.force "androidx.annotation:annotation:${androidxAnnotation_annotation_Version}"
+        resolutionStrategy.force "com.google.code.findbugs:jsr305:${findbugs_version}"
+    }
     //Give a name to your dimension
     flavorDimensions "test_env"
     // If you need to add more flavors, consider using flavor dimensions.
@@ -125,81 +162,88 @@ android {
      *  Apply the build hooks here
      **********************************************************/
     apply from: 'gradle/builds_hooks.gradle'
+    /***********************************************************
+     *  Apply plugin
+     **********************************************************/
+    /***********************************************************
+     *  Defining the weekly release
+     **********************************************************/
+    apply from: 'gradle/tools_reporter.gradle'
+    apply from: 'gradle/release.gradle'
+    /***********************************************************
+     *  Apply SonarQube Settings
+     **********************************************************/
+//    apply from: 'gradle/toolsReporter/sonarqube.gradle'
+    /***********************************************************
+     * Our gradle file defining the upload
+     * TODO: Define a upload plugin if needed
+     **********************************************************/
+    //apply from: 'gradle/releaseGradle/nexus/gradle_nexus_release.gradle'
 
+    /***********************************************************
+     *  For Android X migration of the test
+     **********************************************************/
+    // Gradle automatically adds 'android.test.runner' as a dependency.
+    useLibrary 'android.test.runner'
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
 }
 
+apply from: './var_def_lib.gradle'
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
-    implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
-    implementation "com.android.support:cardview-v7:${supportLibraryVersion}"
-    implementation "com.android.support:design:${supportLibraryVersion}"
-    implementation "android.arch.persistence.room:runtime:${roomVersion}"
-    implementation "com.android.support.constraint:constraint-layout:${androidXVersionConstraints}"
-    kapt "android.arch.persistence.room:compiler:${roomVersion}"
-    implementation "android.arch.lifecycle:extensions:${archiComponentVersion}"
-    androidTestImplementation "android.arch.core:core-testing:${archiComponentVersion}"
-    implementation "com.android.support.constraint:constraint-layout:${androidXVersionConstraints}"
-    implementation "android.arch.work:work-runtime:${workManagerVersion}"
-    androidTestImplementation "android.arch.work:work-testing:${workManagerVersion}"
-    implementation "android.arch.paging:runtime:${archiComponentVersion}"
-    testImplementation "android.arch.paging:common:${archiComponentVersion}"
-
-    implementation "com.facebook.stetho:stetho:${fbStetho}"
-    implementation "com.facebook.stetho:stetho-okhttp3:${fbStetho}"
-
-    // I want eventBus
-    implementation "org.greenrobot:eventbus:${eventBusVersion}"
-
-
-    // I want Retrofit,OkIo, OkHttp and Moshi
-    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
-    implementation "com.squareup.retrofit2:converter-moshi:${retrofitVersion}"
-    implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpLoginInterceptVersion}"
-    implementation "com.squareup.okio:okio:${okioVersion}"
-
-    // I want JodaTime not to drive nuts managing date
-    implementation "net.danlew:android.joda:${jodaTimeVersion}"
-
-    //For the Tests !!!
-    // Dependencies for unit tests
-    testImplementation "junit:junit:${junitVersion}"
-
-    //for unit tests
-//    testImplementation "org.mockito:mockito-all:$project.mokitoVersion"
-    // required if you want to use Mockito for unit tests
-    testImplementation "org.mockito:mockito-core:$project.mokitoVersion"
-    // required if you want to use Mockito for Android tests
-    androidTestImplementation "org.mockito:mockito-android:$project.mokitoVersion"
-    // Android Testing Support Library's runner and rules
-    androidTestImplementation "com.android.support.test:runner:$project.runnerVersion"
-    androidTestImplementation "com.android.support.test:rules:$project.rulesVersion"
-    // Espresso UI Testing dependencies.
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.espressoVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$project.espressoVersion"
-    // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
-
-    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$project.espressoVersion"
-    implementation "com.android.support.test.espresso:espresso-idling-resource:$project.espressoVersion"
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+	implementation "androidx.appcompat:appcompat:${androidxAppcompat_appcompat_Version}"
+	implementation "androidx.recyclerview:recyclerview:${androidxRecyclerview_recyclerview_Version}"
+	implementation "androidx.cardview:cardview:${androidxCardview_cardview_Version}"
+	implementation "com.google.android.material:material:${comGoogleAndroidMaterial_material_Version}"
+	implementation "androidx.room:room-runtime:${androidxRoom_roomRuntime_Version}"
+	implementation "androidx.constraintlayout:constraintlayout:${androidxConstraintlayout_constraintlayout_Version}"
+	kapt "androidx.room:room-compiler:${androidxRoom_roomCompiler_Version}"
+	implementation "androidx.lifecycle:lifecycle-extensions:${androidxLifecycle_lifecycleExtensions_Version}"
+	androidTestImplementation "androidx.arch.core:core-testing:${androidxArchCore_coreTesting_Version}"
+	implementation "androidx.constraintlayout:constraintlayout:${androidxConstraintlayout_constraintlayout_Version}"
+	implementation "android.arch.work:work-runtime:${androidArchWork_workRuntime_Version}"
+	androidTestImplementation "android.arch.work:work-testing:${androidArchWork_workTesting_Version}"
+	implementation "androidx.paging:paging-runtime:${androidxPaging_pagingRuntime_Version}"
+	testImplementation "androidx.paging:paging-common:${androidxPaging_pagingCommon_Version}"
+    //Stetho just to check
+    //http://facebook.github.io/stetho/
+    //https://code.tutsplus.com/tutorials/debugging-android-apps-with-facebooks-stetho--cms-24205
+	implementation"com.facebook.stetho:stetho:${comFacebookStetho_stetho_Version}"
+    //Stetho just to check
+    //http://facebook.github.io/stetho/
+    //https://code.tutsplus.com/tutorials/debugging-android-apps-with-facebooks-stetho--cms-24205
+	implementation"com.facebook.stetho:stetho-okhttp3:${comFacebookStetho_stethoOkhttp3_Version}"
+    // EventBus
+	implementation"org.greenrobot:eventbus:${orgGreenrobot_eventbus_Version}"
+    // Retrofit and co
+	implementation"com.squareup.retrofit2:retrofit:${comSquareupRetrofit2_retrofit_Version}"
+    // Retrofit and co
+	implementation"com.squareup.retrofit2:converter-moshi:${comSquareupRetrofit2_converterMoshi_Version}"
+    // Retrofit and co
+	implementation"com.squareup.okhttp3:okhttp:${comSquareupOkhttp3_okhttp_Version}"
+    // Retrofit and co
+	implementation"com.squareup.okhttp3:logging-interceptor:${comSquareupOkhttp3_loggingInterceptor_Version}"
+    // Retrofit and co
+	implementation"com.squareup.okio:okio:${comSquareupOkio_okio_Version}"
+	implementation "net.danlew:android.joda:${netDanlew_androidJoda_Version}"
+    // Mockito
+	testImplementation"org.mockito:mockito-core:${orgMockito_mockitoCore_Version}"
+	androidTestImplementation "org.mockito:mockito-android:${orgMockito_mockitoAndroid_Version}"
+	androidTestImplementation "androidx.test:runner:${androidxTest_runner_Version}"
+	androidTestImplementation "androidx.test:rules:${androidxTest_rules_Version}"
+	androidTestImplementation "androidx.test.espresso:espresso-core:${androidxTestEspresso_espressoCore_Version}"
+	androidTestImplementation "androidx.test.espresso:espresso-intents:${androidxTestEspresso_espressoIntents_Version}"
+	androidTestImplementation "androidx.test.espresso:espresso-contrib:${androidxTestEspresso_espressoContrib_Version}"
+	implementation "androidx.test.espresso:espresso-idling-resource:${androidxTestEspresso_espressoIdlingResource_Version}"
+    //Crashlytics
+    implementation("com.crashlytics.sdk.android:crashlytics:${comCrashlyticsSdkAndroid_crashlytics_Version}") {
         transitive = true;
     }
+    //Junit elements    
+    androidTestImplementation "junit:junit:${junit_junit_Version}" 
+    testImplementation "junit:junit:${junit_junit_Version}"
 }
-/***********************************************************
- *  Apply your check here
- **********************************************************/
-apply from: 'gradle/tools_reporter.gradle'
-apply from: 'gradle/release.gradle'
-
-/*
-Resolves dependency versions across test and production APKs, specifically, transitive
-dependencies. This is required since Espresso internally has a dependency on support-annotations.
-*/
-configurations.all {
-    resolutionStrategy.force "com.android.support:support-annotations:${supportLibraryVersion}"
-}
-
 /*
 All direct/transitive dependencies shared between your test and production APKs need to be
 excluded from the test APK! This is necessary because both APKs will contain the same classes. Not

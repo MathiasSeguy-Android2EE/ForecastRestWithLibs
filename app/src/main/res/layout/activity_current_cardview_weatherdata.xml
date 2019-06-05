@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:layout_marginHorizontal="@dimen/activity_horizontal_small_margin">
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_name"
         android:textAppearance="@style/MyTextAppearance.Main.Secondary"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="City name" />
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_dt"
         android:textAppearance="@style/MyTextAppearance.SmallCardText.Header"
         android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/txv_name"
         tools:text="lun 23:56" />
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_visibility"
         android:textAppearance="@style/MyTextAppearance.SmallCardText"
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         tools:text="Visibility" />
 
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_base"
         android:textAppearance="@style/MyTextAppearance.SmallCardText"
         android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_chainStyle="spread_inside"
         tools:text="Station" />
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_coord"
         android:textAppearance="@style/MyTextAppearance.SmallCardText"
         android:layout_width="wrap_content"
@@ -63,6 +63,6 @@
         app:layout_constraintStart_toEndOf="@+id/txv_visibility"
         app:layout_constraintBaseline_toBaselineOf="@id/txv_visibility"
         tools:text="Coordinates" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

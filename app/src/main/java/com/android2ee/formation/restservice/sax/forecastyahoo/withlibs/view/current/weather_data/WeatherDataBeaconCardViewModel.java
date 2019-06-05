@@ -1,7 +1,7 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.current.weather_data;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.dao.ForecastDatabase;
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.model.current.WeatherData;

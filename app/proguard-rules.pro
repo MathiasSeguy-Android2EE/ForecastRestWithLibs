@@ -1,18 +1,16 @@
 # Add project specific ProGuard rules here.
 
+-ignorewarnings
+
 ############################### Retain generic rules.################################
 -keepattributes Signature
 -keepattributes Exceptions
 -keepattributes *Annotation*
 
--dontwarn javax.annotation.Nullable
--dontwarn javax.annotation.ParametersAreNonnullByDefault
--dontwarn javax.annotation.CheckReturnValue
--dontwarn javax.annotation.**
--dontwarn sun.misc.**
 
 ############################### Rules for okio.################################
 -dontwarn okio.**
+
 
 ############################### Rules for Batch SDK################################
 #warning
@@ -47,21 +45,21 @@
 
 ########################### Rules for Butterknife########################
 #warning
--dontwarn butterknife.internal.**
--dontwarn butterknife.Views$InjectViewProcessor
-
-#class
- # Retain generated class which implement Unbinder.
--keep public class * implements butterknife.Unbinder { public <init>(...); }
-    # Prevent obfuscation of types which use ButterKnife annotations since the simple name
-    # is used to reflectively look up the generated ViewBinding.
--keep class butterknife.*
--keep class butterknife.** { *; }
--keepclasseswithmembernames class * { @butterknife.* <methods>; }
--keepclasseswithmembernames class * { @butterknife.* <fields>; }
--keep class **$$ViewInjector { *; }
--keepnames class * { @butterknife.InjectView *;}
--keep class **$$ViewInjector { *; }
+#-dontwarn butterknife.internal.**
+#-dontwarn butterknife.Views$InjectViewProcessor
+#
+##class
+# # Retain generated class which implement Unbinder.
+#-keep public class * implements butterknife.Unbinder { public <init>(...); }
+#    # Prevent obfuscation of types which use ButterKnife annotations since the simple name
+#    # is used to reflectively look up the generated ViewBinding.
+#-keep class butterknife.*
+#-keep class butterknife.** { *; }
+#-keepclasseswithmembernames class * { @butterknife.* <methods>; }
+#-keepclasseswithmembernames class * { @butterknife.* <fields>; }
+#-keep class **$$ViewInjector { *; }
+#-keepnames class * { @butterknife.InjectView *;}
+#-keep class **$$ViewInjector { *; }
 
 
 
@@ -181,44 +179,12 @@
 
 
 
-########################### Rules for MyCMS : Retrofit is sensetive about Models ##########################
--keep class com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.model.**{*;}
-
 ############################### Generic rules for custom views in MVP/MVVM pattern###################
 -keep public class * extends android.view.View {
     public <init>(android.content.Context);
     public <init>(android.content.Context, android.util.AttributeSet);
     public <init>(android.content.Context, android.util.AttributeSet, int);
 }
-
-## Android architecture components: Lifecycle
-# LifecycleObserver's empty constructor is considered to be unused by proguard
--keepclassmembers class * implements android.arch.lifecycle.LifecycleObserver {
-    <init>(...);
-}
-# ViewModel's empty constructor is considered to be unused by proguard
--keepclassmembers class * extends android.arch.lifecycle.ViewModel {
-    <init>(...);
-}
-# keep Lifecycle State and Event enums values
--keepclassmembers class android.arch.lifecycle.Lifecycle$State { *; }
--keepclassmembers class android.arch.lifecycle.Lifecycle$Event { *; }
-# keep methods annotated with @OnLifecycleEvent even if they seem to be unused
-# (Mostly for LiveData.LifecycleBoundObserver.onStateChange(), but who knows)
--keepclassmembers class * {
-    @android.arch.lifecycle.OnLifecycleEvent *;
-}
-
--keepclassmembers class * implements android.arch.lifecycle.LifecycleObserver {
-    <init>(...);
-}
-
--keep class * implements android.arch.lifecycle.LifecycleObserver {
-    <init>(...);
-}
--keepclassmembers class android.arch.** { *; }
--keep class android.arch.** { *; }
--dontwarn android.arch.**
 ############################### Retain generic rules for Support Library if need.################################
 # Hide warnings about references to newer platforms in the library
 # Google Play Services library

@@ -1,0 +1,52 @@
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+	implementation "androidx.appcompat:appcompat:${androidxAppcompat_appcompat_Version}"
+	implementation "androidx.recyclerview:recyclerview:${androidxRecyclerview_recyclerview_Version}"
+	implementation "androidx.cardview:cardview:${androidxCardview_cardview_Version}"
+	implementation "com.google.android.material:material:${comGoogleAndroidMaterial_material_Version}"
+	implementation "androidx.room:room-runtime:${androidxRoom_roomRuntime_Version}"
+	implementation "androidx.constraintlayout:constraintlayout:${androidxConstraintlayout_constraintlayout_Version}"
+	kapt "androidx.room:room-compiler:${androidxRoom_roomCompiler_Version}"
+	implementation "androidx.lifecycle:lifecycle-extensions:${androidxLifecycle_lifecycleExtensions_Version}"
+	androidTestImplementation "androidx.arch.core:core-testing:${androidxArchCore_coreTesting_Version}"
+	implementation "androidx.constraintlayout:constraintlayout:${androidxConstraintlayout_constraintlayout_Version}"
+	implementation "android.arch.work:work-runtime:${androidArchWork_workRuntime_Version}"
+	androidTestImplementation "android.arch.work:work-testing:${androidArchWork_workTesting_Version}"
+	implementation "androidx.paging:paging-runtime:${androidxPaging_pagingRuntime_Version}"
+	testImplementation "androidx.paging:paging-common:${androidxPaging_pagingCommon_Version}"
+    //Stetho just to check
+    //http://facebook.github.io/stetho/
+    //https://code.tutsplus.com/tutorials/debugging-android-apps-with-facebooks-stetho--cms-24205
+	implementation"com.facebook.stetho:stetho:${comFacebookStetho_stetho_Version}"
+    //Stetho just to check
+    //http://facebook.github.io/stetho/
+    //https://code.tutsplus.com/tutorials/debugging-android-apps-with-facebooks-stetho--cms-24205
+	implementation"com.facebook.stetho:stetho-okhttp3:${comFacebookStetho_stethoOkhttp3_Version}"
+    // EventBus
+	implementation"org.greenrobot:eventbus:${orgGreenrobot_eventbus_Version}"
+    // Retrofit and co
+	implementation"com.squareup.retrofit2:retrofit:${comSquareupRetrofit2_retrofit_Version}"
+    // Retrofit and co
+	implementation"com.squareup.retrofit2:converter-moshi:${comSquareupRetrofit2_converterMoshi_Version}"
+    // Retrofit and co
+	implementation"com.squareup.okhttp3:okhttp:${comSquareupOkhttp3_okhttp_Version}"
+    // Retrofit and co
+	implementation"com.squareup.okhttp3:logging-interceptor:${comSquareupOkhttp3_loggingInterceptor_Version}"
+    // Retrofit and co
+	implementation"com.squareup.okio:okio:${comSquareupOkio_okio_Version}"
+	implementation "net.danlew:android.joda:${netDanlew_androidJoda_Version}"
+    // Mockito
+	testImplementation"org.mockito:mockito-core:${orgMockito_mockitoCore_Version}"
+	androidTestImplementation "org.mockito:mockito-android:${orgMockito_mockitoAndroid_Version}"
+	androidTestImplementation "androidx.test:runner:${androidxTest_runner_Version}"
+	androidTestImplementation "androidx.test:rules:${androidxTest_rules_Version}"
+	androidTestImplementation "androidx.test.espresso:espresso-core:${androidxTestEspresso_espressoCore_Version}"
+	androidTestImplementation "androidx.test.espresso:espresso-intents:${androidxTestEspresso_espressoIntents_Version}"
+	androidTestImplementation "androidx.test.espresso:espresso-contrib:${androidxTestEspresso_espressoContrib_Version}"
+	implementation "androidx.test.espresso:espresso-idling-resource:${androidxTestEspresso_espressoIdlingResource_Version}"
+    //Crashlytics
+    implementation("com.crashlytics.sdk.android:crashlytics:${comCrashlyticsSdkAndroid_crashlytics_Version}") {
+        transitive = true;
+    }
+    //Junit elements    
+    androidTestImplementation "junit:junit:${junit_junit_Version}" 
+    testImplementation "junit:junit:${junit_junit_Version}"

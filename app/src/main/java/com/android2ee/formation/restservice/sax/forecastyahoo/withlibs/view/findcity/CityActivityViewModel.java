@@ -1,7 +1,7 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.findcity;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.MyApplication;
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.model.current.City;

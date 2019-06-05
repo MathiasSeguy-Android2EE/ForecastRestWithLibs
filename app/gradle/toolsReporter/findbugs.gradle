@@ -1,27 +1,23 @@
+//DONE 12/04/2019
 apply plugin: 'findbugs'
-/**
- * Define your directory
- */
+
 def reportsDir = "${project.buildDir}/reports"
 
 // Add checkstyle, findbugs, pmd and lint to the check task.
 //check.dependsOn 'findbugs'
 
 task findbugs(type: FindBugs, dependsOn: [
-        ':app:assembleDebug',
-        ':app:cleanPreviousFindbugsReports',//ok
+        ':app:assembleProd'
+        ,':app:cleanPreviousFindbugsReports'//ok
 ]) {
     group = project.ext.myGradleGroup
-    description ="Generate the findbugs report."
+    description = "Generate the findbugs report."
     ignoreFailures = true
     reportLevel = "low"
     effort = "max"
     excludeFilter = new File("gradle/toolsReporter/findbugs/findbugs-filter.xml")
-    //Define exactly where are the class in your Build folder to analyze
-    classes = files("${buildDir}/intermediates/app_classes/prodDebug",
-                    "${buildDir}/intermediates/app_classes/prodDebug")
+    classes = files("${buildDir}/intermediates/app_classes/prodDebug/packageAppClassesProdDebug")
 
-    //Where are your sources:
     source 'src/main/java'
     include '**/*.java'
     exclude '**/gen/**'

@@ -1,9 +1,8 @@
+//DONE 12/04/2019
 /***********************************************************
  *  Call gradlew generateRelease for this file
  *  It's your entry point
  **********************************************************/
-
-
 apply from: 'gradle/release/to_release_folder.gradle'
 println 'in Release task declared. Ready to use.'
 //http://coders-kitchen.com/2013/11/01/gradle-git-how-to-map-your-branch-to-a-deployment-profile/
@@ -39,8 +38,8 @@ task generateRelease(dependsOn: ['clean',
 
 //Make a full build :clean/build/InstrumenetationTests
 task releaseBuild(dependsOn: [
-//        'generateLicensePage',
-//        'enableCrashlytics',
+        'generateLicensePage',
+        'enableCrashlytics',
         'buildAndCheckProject'
 ]) {
     group = project.ext.myGradleGroup
@@ -97,6 +96,6 @@ task enableCrashlytics{
 packageRelease.mustRunAfter 'releaseBuild'
 packageRelease.mustRunAfter 'fullBuild'
 fullBuild.mustRunAfter enableCrashlytics
-//fullBuild.mustRunAfter generateLicensePage
+fullBuild.mustRunAfter generateLicensePage
 
 

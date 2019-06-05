@@ -1,7 +1,7 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.service.weather;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import android.graphics.Bitmap;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.MyApplication;

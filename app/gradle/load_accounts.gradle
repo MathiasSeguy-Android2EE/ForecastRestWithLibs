@@ -1,6 +1,3 @@
-println 'Hello from gradle_extras'
-
-
 /***********************************************************
  *  Loading Variables from an external properties Files
  *  There is no task, it's just code you run.
@@ -14,7 +11,7 @@ println 'Hello from gradle_extras'
 //Define a Properties object (you'll read)
 Properties props = new Properties()
 //find the file defining those properties
-def propFile = project.file('./gradle/properties/accounts.properties')
+def propFile = project.file('./gradle/publicCredentials/accounts_public.properties')
 //You can also use rootProject
 //def propFileNotUsed = rootProject.file('./app/gradle_others.properties')
 //do a log (in case), it will be displayed every time you avluate the gradle task graph
@@ -25,21 +22,19 @@ if (propFile.canRead()){
     props.load(new FileInputStream(propFile))
 
     //You can define specific variables of the build directly
-    if (props!=null
-            && props.containsKey('JKSFile')) {
+    if (props!=null) {
         //Now the properties are loaded in your props's set of variables, enjoy an reuse them
-        //here defining the debug signing config
         //https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html
         //To create or set a value
 
         //For Debug
-        project.ext.set("JKSFile" , file(props['JKSFile']))
+        project.ext.set("JKSFile" , file(props['JKSFile_Public']))
         //This syntax works
-        project.ext.set("JKSPassword" , props['JKSPassword'])
+        project.ext.set("JKSPassword" , props['JKSPassword_Public'])
         //This syntax works too
-        project.ext.JKSKeyAlias= props['JKSKeyAlias']
+        project.ext.JKSKeyAlias= props['JKSKeyAlias_Public']
         //This syntax works also
-        project.ext.JKSKeyPassword=props['JKSKeyPassword']
+        project.ext.JKSKeyPassword=props['JKSKeyPassword_Public']
         project.ext.GOOGLE_MAPS_API_KEY_DEBUG=props['GOOGLE_MAPS_API_KEY_DEBUG']
         //and those both variables are the same project.ext.myvar or project.myvar
         println "You have = project.ext.JKSPassword=${project.ext.JKSPassword}"
@@ -50,13 +45,13 @@ if (propFile.canRead()){
         println "You have updated project.ext.GOOGLE_MAPS_API_KEY_DEBUG=${project.ext.GOOGLE_MAPS_API_KEY_DEBUG}"
 
         //For Release
-        project.ext.set("JKSFile_Release" , file(props['JKSFile_Release']))
+        project.ext.set("JKSFile_Release" , file(props['JKSFile_Public']))
         //This syntax works
-        project.ext.set("JKSPassword_Release" , props['JKSPassword_Release'])
+        project.ext.set("JKSPassword_Release" , props['JKSPassword_Public'])
         //This syntax works too
-        project.ext.JKSKeyAlias_Release= props['JKSKeyAlias_Release']
+        project.ext.JKSKeyAlias_Release= props['JKSKeyAlias_Public']
         //This syntax works also
-        project.ext.JKSKeyPassword_Release=props['JKSKeyPassword_Release']
+        project.ext.JKSKeyPassword_Release=props['JKSKeyPassword_Public']
         project.ext.GOOGLE_MAPS_API_KEY_RELEASE=props['GOOGLE_MAPS_API_KEY_RELEASE']
         //and those both variables are the same project.ext.myvar or project.myvar
         println "You have = project.JKSPassword_Release=${project.JKSPassword_Release}"

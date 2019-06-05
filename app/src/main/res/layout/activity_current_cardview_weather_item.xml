@@ -8,7 +8,7 @@
     style="@style/MySmallCardView"
     android:id="@+id/cv_weather">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:showIn="@layout/activity_current_cardview_weather_item"
@@ -16,7 +16,7 @@
         android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:layout_marginVertical="@dimen/activity_vertical_margin">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imv_ico"
             android:layout_width="92dp"
             android:layout_height="92dp"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txv_main"
             android:textAppearance="@style/MyTextAppearance.Main.Primary"
             android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
             app:layout_constraintStart_toEndOf="@+id/imv_ico"
             app:layout_constraintTop_toTopOf="@+id/imv_ico" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txv_description"
             android:textAppearance="@style/MyTextAppearance.SmallCardText.Header"
             android:layout_width="wrap_content"
@@ -49,6 +49,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txv_main" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.current.weather.WeatherCardView>

@@ -3,9 +3,7 @@
  **********************************************************/
 def releaseRootFolder='release/' + def_branche_name+'_v'+project.ext.versionCode
 /**printing content of the release directory
-//http://stackoverflow.com/questions/18569983/androidgradle-list-directories-into-a-file
-//The task name is normally packageRelease
-//But for this file, the following name is better*/
+//http://stackoverflow.com/questions/18569983/androidgradle-list-directories-into-a-file*/
 task packageRelease(dependsOn: ['moveTheReportToReleaseFolder',
                                   'moveTheReportIndexToReleaseFolder',
                                   'moveTheApkToReleaseFolder']) {
@@ -97,6 +95,8 @@ task moveTheReportIndexToReleaseFolder(type: Copy) {
     filter { String line ->
         if(line.contains('${DateOfTheDay}')){
             line.replace('${DateOfTheDay}',project.ext.def_readableSchoolDate)
+        }else if(line.contains('${ProjectName}')){
+            line.replace('${ProjectName}',project.ext.projectName)
         }else if(line.contains('${VersionNumber}')){
             line.replace('${VersionNumber}',project.ext.def_apk_name_wrelease)
         }else line

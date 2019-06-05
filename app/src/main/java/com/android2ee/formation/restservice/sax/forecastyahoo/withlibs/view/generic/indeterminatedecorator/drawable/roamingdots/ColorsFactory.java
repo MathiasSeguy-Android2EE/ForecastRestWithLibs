@@ -1,7 +1,7 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.generic.indeterminatedecorator.drawable.roamingdots;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.R;
 

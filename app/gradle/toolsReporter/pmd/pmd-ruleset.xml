@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!--DONE 12/04/2019-->
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Android Application Rules"
     xmlns="http://pmd.sf.net/ruleset/1.0.0"
     xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd"
@@ -17,7 +18,11 @@
         <exclude name="TooManyStaticImports" />
     </rule>
     <rule ref="rulesets/java/logging-java.xml" />
-    <rule ref="rulesets/java/braces.xml" />
+    <rule ref="rulesets/java/braces.xml">
+        <!-- We allow single line if's without braces -->
+        <exclude name="IfStmtsMustUseBraces" />
+        <exclude name="IfElseStmtsMustUseBraces"/>
+    </rule>
     <rule ref="rulesets/java/strings.xml" />
     <rule ref="rulesets/java/basic.xml" />
     <rule ref="rulesets/java/naming.xml">

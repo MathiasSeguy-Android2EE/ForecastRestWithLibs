@@ -1,23 +1,29 @@
+//DONE 12/04/2019
 /***********************************************************
  *  Creating the Javadocs
  *  https://docs.gradle.org/current/dsl/org.gradle.api.tasks.javadoc.Javadoc.html
  **********************************************************/
-task generateProjectJavadocs(type: Javadoc) {
+apply from: "gradle/toolsReporter/path_definition.gradle"
+
+task generateJavadoc(type: Javadoc) {
     group = project.ext.myGradleGroup
-    description ="Generate the JavaDoc of the project."
-    //because it will fail but generate your JavaDoc (probability 80%)
+    description = "Generate the JavaDoc of the project."
+    title = "JavaDoc"
     failOnError false
-    title = "Javadoc of the Project Multiplication"
     source 'src/main/java'
     classpath = files(project.android.getBootClasspath())
-    destinationDir = file("${buildDir}/reports/javadoc/")
+    destinationDir = javadocDestinationDir
 
+    options {
+        links "http://docs.oracle.com/javase/7/docs/api/"
+        linksOffline "http://d.android.com/reference", "${android.sdkDirectory}/docs/reference"
+    }
     exclude '**/BuildConfig.java'
-    exclude '**/R.java'
-    doFirst(){
+    exclude '**/R.java','**/*.kt'
+    doFirst() {
         println("Generating the Javadocs is starting")
     }
-    doLast(){
+    doLast() {
         println("Generating the Javadocs is done")
     }
 }

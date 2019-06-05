@@ -1,10 +1,10 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.model.forecast;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Embedded;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.Relation;
-import android.support.annotation.Nullable;
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
+import androidx.room.Ignore;
+import androidx.room.Relation;
+import androidx.annotation.Nullable;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.model.Weather;
 import com.squareup.moshi.Json;

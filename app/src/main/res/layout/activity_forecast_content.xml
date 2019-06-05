@@ -12,7 +12,7 @@
         layout="@layout/exception_layout"
         android:visibility="gone" />
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
     android:id="@+id/txvEmptyCase"
     android:textAppearance="@style/MyTextAppearance.Main.Primary"
     android:layout_width="match_parent"
@@ -21,11 +21,11 @@
     android:gravity="center"
     android:visibility="gone"/>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_forecast"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -40,5 +40,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/activity_forecast_cardview_item"/>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

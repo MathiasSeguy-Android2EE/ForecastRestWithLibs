@@ -1,3 +1,4 @@
+//DONE 12/04/2019
 /***********************************************************
  *  Apply the build hooks here
  **********************************************************/
@@ -26,11 +27,11 @@ android.variantFilter { variant ->
     }
 }
 // Always show the result of every unit test, even if it passes.
-//testOptions.unitTests.all {
-//    testLogging {
-//        events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
-//    }
-//}
+android.testOptions.unitTests.all {
+    testLogging {
+        events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+    }
+}
 // Continue gradle tasks even if test fails
 tasks.withType(VerificationTask) { task ->
     task.ignoreFailures = true

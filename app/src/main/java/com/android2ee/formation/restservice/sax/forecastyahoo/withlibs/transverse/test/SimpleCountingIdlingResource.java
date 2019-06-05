@@ -16,11 +16,11 @@
 
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.test;
 
-import android.support.test.espresso.IdlingResource;
+import androidx.test.espresso.IdlingResource;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static android.support.v4.util.Preconditions.checkNotNull;
+import static androidx.core.util.Preconditions.checkNotNull;
 
 /**
  * A simple counter implementation of {@link IdlingResource} that determines idleness by

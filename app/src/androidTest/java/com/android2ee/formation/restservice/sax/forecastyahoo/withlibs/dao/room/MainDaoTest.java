@@ -1,12 +1,12 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.dao.room;
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.persistence.room.Room;
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.room.Room;
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.test.InstrumentationRegistry;
+import androidx.annotation.Nullable;
+import androidx.test.InstrumentationRegistry;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.dao.ForecastDatabase;
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.model.DataGeneratorSimple;

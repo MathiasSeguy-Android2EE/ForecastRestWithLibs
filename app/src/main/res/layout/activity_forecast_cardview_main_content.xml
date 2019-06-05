@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_forecast_cardview_item">
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_humidity"
         android:textAppearance="@style/MyTextAppearance.SmallCardText"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toStartOf="@+id/iv_drop"
         tools:text="70"/>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_drop"
         android:layout_width="18dp"
         android:layout_height="18dp"
@@ -33,7 +33,7 @@
         app:tint="@color/colorMin" />
 
     <!--style="@style/MyTextView.Main.Tertiary"-->
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_pressure"
         android:textAppearance="@style/MyTextAppearance.SmallCardText"
         android:layout_width="wrap_content"
@@ -44,4 +44,4 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:text="1024" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

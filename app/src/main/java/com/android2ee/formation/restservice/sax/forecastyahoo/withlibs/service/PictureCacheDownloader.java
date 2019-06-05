@@ -1,6 +1,6 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.service;
 
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.MutableLiveData;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;

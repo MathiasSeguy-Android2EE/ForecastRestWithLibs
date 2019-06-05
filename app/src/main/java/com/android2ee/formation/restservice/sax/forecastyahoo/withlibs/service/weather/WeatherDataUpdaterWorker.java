@@ -1,6 +1,6 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.service.weather;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.MyApplication;
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.dao.ForecastDatabase;

@@ -1,6 +1,6 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.current.main;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 import android.util.SparseArray;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.dao.ForecastDatabase;

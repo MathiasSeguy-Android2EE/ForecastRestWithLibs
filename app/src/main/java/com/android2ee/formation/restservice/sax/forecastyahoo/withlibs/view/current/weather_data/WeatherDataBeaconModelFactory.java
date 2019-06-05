@@ -1,8 +1,8 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.current.weather_data;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Created by Mathias Seguy alias Android2ee on 26/05/2018.

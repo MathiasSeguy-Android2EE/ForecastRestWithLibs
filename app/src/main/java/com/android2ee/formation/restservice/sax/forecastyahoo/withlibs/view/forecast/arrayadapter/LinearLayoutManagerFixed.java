@@ -1,8 +1,8 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.forecast.arrayadapter;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -38,9 +38,9 @@ public class LinearLayoutManagerFixed extends LinearLayoutManager {
      * @param attrs
      * @param defStyleAttr
      * @param defStyleRes
-     * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_android_orientation
-     * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_reverseLayout
-     * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_stackFromEnd
+     * @attr ref androidx.recyclerview.R.styleable#RecyclerView_android_orientation
+     * @attr ref androidx.recyclerview.R.styleable#RecyclerView_reverseLayout
+     * @attr ref androidx.recyclerview.R.styleable#RecyclerView_stackFromEnd
      */
     public LinearLayoutManagerFixed(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);

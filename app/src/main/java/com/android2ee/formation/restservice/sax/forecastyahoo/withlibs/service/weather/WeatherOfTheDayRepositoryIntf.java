@@ -1,6 +1,6 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.service.weather;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.service.MotherBusinessServiceIntf;
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.model.calculated.WeatherOfTheDay;

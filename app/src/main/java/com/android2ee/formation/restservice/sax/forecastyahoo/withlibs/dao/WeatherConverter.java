@@ -1,6 +1,6 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.dao;
 
-import android.arch.persistence.room.TypeConverter;
+import androidx.room.TypeConverter;
 import android.text.TextUtils;
 
 import com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.transverse.model.Clouds;

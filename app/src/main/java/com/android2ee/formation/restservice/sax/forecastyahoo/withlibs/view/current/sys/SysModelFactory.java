@@ -1,8 +1,8 @@
 package com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.current.sys;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Marion Aubard on 15/06/2018.
