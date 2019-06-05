@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_forecast_cardview_item">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_humidity"
+        android:textAppearance="@style/MyTextAppearance.SmallCardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/colorMin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_drop"
+        tools:text="70"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_drop"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_drop_humidity_percent"
+        android:layout_marginEnd="@dimen/activity_horizontal_xsmall_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_xsmall_margin"
+        app:tint="@color/colorMin" />
+
+    <!--style="@style/MyTextView.Main.Tertiary"-->
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_pressure"
+        android:textAppearance="@style/MyTextAppearance.SmallCardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_xsmall_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_xsmall_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="1024" />
+
+</android.support.constraint.ConstraintLayout>

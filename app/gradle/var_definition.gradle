@@ -1,0 +1,178 @@
+/***********************************************************
+ *  Gradle definition file of our dynamic variables
+ **********************************************************/
+println 'in the var_defintion'
+
+/***********************************************************
+ *  Then define you attibutes/variables
+ *  You need to define that way for others file to know them
+ *  Others gradle file can not call the method (or I didn't find yet)
+ **********************************************************/
+project.ext{
+    majorVersion = 0 //To be increased for every major Release
+    minorVersion = 0 //To be increased for every minor release
+    buildNumber = 1.0//increased for every build generation
+    versionName = majorVersion + '.' + minorVersion + '.' + buildNumber
+    myGradleGroup="Forecast tasks"
+    //Can not decrease
+    versionCode = 1
+    versionName = "2.0.2"
+    // Sdk and tools
+    minSdkVersion = 14
+    targetSdkVersion = 28//27
+    compileSdkVersion = 28//27
+    //Can not decrease
+    versionCode = 10
+    //Gradle groupd name (for your own tasks)
+
+    //Please use the support library and use
+    useSupportLibVectorDrawable = true
+
+    //natif tools
+    //in your SDK mpanager
+    buildToolsVersion = "28.0.1"//26.0.2//28.0.1
+    //https://developer.android.com/topic/libraries/support-library/revisions.html
+    supportLibraryVersion = '27.1.1'
+    //https://developer.android.com/topic/libraries/support-library/revisions.html
+    supportAnnotationVersion = "27.1.1"
+    androidXVersionConstraints = "1.1.2"
+    //android architecture components
+    archiComponentVersion = "1.1.0"//-rc01
+    roomVersion = "1.1.0"//-rc01
+    workManagerVersion= "1.0.0-alpha08"//"1.0.0-alpha06"
+    androidXVersionConstraints="1.1.1"
+    //natif
+    //https://developer.android.com/training/testing/espresso/setup.html
+    androidTestVersion = "1.0.1"//1.0.0
+    //http://junit.org/junit5/
+    junitVersion = "4.12"
+    //https://developers.google.com/android/guides/releases
+    googlePlayServices = "15.0.0"//11.0.1
+    //https://github.com/googlemaps/android-maps-utils/releases
+    androidGoogleMapUtil = "0.5"
+    //In your Android SDK Manager
+    constraintLayout = "1.1.0"//1.0.2
+    //https://developer.android.com/studio/build/multidex.html
+    supprtMultidex = "1.0.3"
+
+    //natural libs
+    //https://github.com/greenrobot/EventBus/releases
+    eventBusVersion = '3.1.1'
+    jodaTimeVersion = '2.9.2'
+    //debug tools
+    //https://github.com/square/leakcanary/releases
+    leakcanaryVersion = "1.5.4"//1.5.1
+    //https://fabric.io/kits/android/crashlytics/install
+    crashlyticsVersion = "2.9.3@aar"//2.6.8
+
+    //facebook analyse tools
+    fbStetho = "1.5.0"
+    //tests
+    espressoVersion = '3.0.2'
+    //https://mvnrepository.com/artifact/org.json/json
+    jsonVersion = "20171018"
+    //https://github.com/mockito/mockito/releases
+    mokitoVersion = '2.12.0'//1.10.19
+    powerMockito = '1.6.2'
+    hamcrestVersion = '1.3'
+    runnerVersion = '0.5'
+    rulesVersion = '0.5'
+
+
+
+
+    //retrofit
+    //http://square.github.io/retrofit/
+    retrofitVersion = '2.4.0'
+    //http://square.github.io/okhttp/
+    okhttpVersion = '3.10.0'
+    okhttpLoginInterceptVersion = '3.10.0'
+    //https://github.com/square/okio/releases
+    okioVersion = '1.14.1'
+    //android architecture components
+    archiComponentVersion = "1.0.0"
+
+    //build var
+    def_time_format=getDateTime()
+    def_readableSchoolDate=getReadableSchoolDate()
+    def_branche_name=branch()
+    def_commit_number=commitNumber()
+    def_current_apk_name=apkCurrentSuffix()
+    def_apk_name_wrelease=apkWReleaseSuffix()
+
+}
+/***********************************************************
+ *  Define the methods that calculate your variables
+ **********************************************************/
+/**
+ * For the list of available formats:
+ * http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
+ * Use this definition to obtain the date at the format
+ * @return The date as a string
+ */
+def getDateTime() {
+    return new Date().format("MMdd")
+}
+def getWeekNumber() {
+    return new Date().format("w")
+}
+def getYearNumber() {
+    return new Date().format("YYYY")
+}
+def getReadableSchoolDate() {
+    return new Date().format("dd MMM YYYY hh:mm")
+}
+/**
+ * Return apk current
+ * @return
+ */
+def apkCurrentSuffix(){
+    def_branche_name+'_'+getDateTime()
+}
+/**
+ * Return apk weekly release
+ * app-prod-debug_dev-0.5.0.0+2017w16.BuildCommit.apk
+ * '_'+def_branche_name+'_w'+getWeekNumber()
+ * '_'+versionName+'+getYearNumber()_w'+getWeekNumber()+"."+def_commit_number
+ * @return
+ */
+def apkWReleaseSuffix(){
+    '_'+versionName+'.'+versionCode+'+'+getYearNumber()+'_w'+getWeekNumber()+"."+def_commit_number
+}
+/**
+*Find the branch name of the build
+*this is a function
+ * */
+def branch() {
+    def branch = ""
+    def branchName = ""
+    def command = hasProperty('gitPath') ? gitPath : 'git';
+    //Find the branch name
+    def proc = "${command} rev-parse --abbrev-ref HEAD".execute()
+    proc.in.eachLine { line -> branch = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    branchName='transient'
+    if(branch.startsWith('dev')) {
+        branchName='dev'
+    } else if (branch.startsWith('release') ||
+            branch.startsWith('bugfix') ||
+            branch.startsWith('hotfix')) {
+        branchName='staging'
+    } else if(branch.startsWith('master')) {
+        branchName='master'
+    }
+    println 'Branch name is equals to '+branch
+    branchName
+}
+
+def commitNumber(){
+    def commitNum = ""
+    def command = hasProperty('gitPath') ? gitPath : 'git';
+    def proc = "${command} rev-list --count  ${def_branche_name}".execute()
+    proc.in.eachLine { line -> commitNum = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    println 'The commit number is '+commitNum
+    commitNum
+}

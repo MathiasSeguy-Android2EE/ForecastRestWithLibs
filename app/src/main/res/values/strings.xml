@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <!-- CityActivity message Message -->
+    <string name="city_act_choose_city">Please give the name of the city you search</string>
+    <string name="city_act_edt_hint">The city\'s name you\'re searching</string>
+    <string name="city_act_edt_ime">Search</string>
+    <!-- MEnu Url -->
+    <string name="sharing_app_message">Hey, I am happy to share with you my favorite forecast application. It\'s on gPlay, so it\'s safe. You can find it here: https://play.google.com/store/apps/details?id=com.android2ee.formation.restservice.sax.forecastyahoo</string>
+    <string name="sharing_app_message_subject">My favorite forecast application</string>
+    <string name="sharing_app_action_title">Share the application via</string>
+    <string name="android2ee_url">http://www.android2ee.com</string>
+    <string name="android2ee_medium_url">https://medium.com/@android2ee</string>
+    <string name="mse_dvp_url">http://mathias-seguy.developpez.com/</string>
+    <string name="mse_youtube_url">https://www.youtube.com/results?search_query=android2ee+mathias+seguy</string>
+    <string name="mse_linkedin_url">https://www.linkedin.com/in/mathiasseguy/</string>
+    <string name="mse_github_url">https://github.com/MathiasSeguy-Android2EE</string>
+    <string name="mse_email">mathias.seguy@android2ee.com</string>
+    <string name="mail_subject">[Weather Forecast WithLibs]Your subject:</string>
+    <string name="mail_body">Your message:</string>
+    <string name="action_author">Author</string>
+    <string name="action_search">Search a city</string>
+    <string name="action_delete">Delete</string>
+    <string name="title_activity_city">CityActivity</string>
+    <!--Menu Bottom Navigation Bar-->
+    <string name="menu_now">Now</string>
+    <string name="menu_wotf">Days</string>
+    <string name="menu_3h">3h</string>
+
+    <!--DeleteAlertDialog-->
+    <string name="btn_yes">Yes</string>
+    <string name="btn_no">No</string>
+    <string name="alertdialog_message">Do you really want to delete %1$s ?</string>
+
+
+    <string name="action_settings">Setting</string>
+    <string name="hello">The weather looks like</string>
+    <!-- constants for the sharedPreference MyApplication.CONNECTIVITY_STATUS -->
+    <string name="has_wifi">has_wifi</string>
+    <string name="has_network">has_network</string>
+    <string name="telephonyType">telephonyType</string>
+    <string name="networkStateInitialized">networkStateInitialized</string>
+    <string name="last_update">lastUpdateFromNetwork</string>
+    <!-- constants for File names -->
+    <string name="picture_folder_name">picture</string>
+    <!-- Message to display the weather -->
+    <string name="min">%1$d°C</string>
+    <string name="max">%1$d°C</string>
+    <string name="temp">%1$d°C</string>
+    <!-- Messages for user -->
+    <!--We can not obtain data from the YahooForecast. Are you sure you are really connected? check your notification bar to see if there is message on your network connection.-->
+    <string name="no_data_message">Nous ne pouvons obtenir la météo. Etes vous connecté? Regardez votre barre de notification, peut-être avez-vous un message d\'erreur concernant votre connexion.</string>
+    <string name="title_activity_mother">MotherActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="txv_last_update">Dernière mise à jour: %1$s</string>
+    <string name="txv_last_update_swipe">Tirer la list vers le bas met aussi à jour les données.</string>
+    <string name="txv_updating">Mise à jour des données... Attendez s\'il vous plait...</string>
+    <string name="visibility">%1$d m</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Weathers...</string>
+    <string name="nav_header_subtitle">It should be sunny.</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="generic_crud_failure">A crud operation was tried but it failed ... sorry</string>
+    <string name="no_city_found">NO City Found</string>
+    <string name="no_forecast_for_this_city">No forecast for this city</string>
+
+</resources>

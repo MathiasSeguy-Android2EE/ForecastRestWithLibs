@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+        android:paddingBottom="@dimen/activity_vertical_small_margin"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_country"
+            android:textAppearance="@style/MyTextAppearance.Main.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@tools:sample/cities" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_sunrise"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="@dimen/activity_padding"
+            app:layout_constraintBottom_toTopOf="@+id/tv_sunrise"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_sunset"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_sunrise_anim"
+            app:tint="@color/yellow_sunrise" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_sunrise"
+            android:textAppearance="@style/MyTextAppearance.SmallCardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/activity_padding"
+            android:layout_marginStart="@dimen/activity_padding"
+            app:layout_constraintTop_toBottomOf="@+id/iv_sunrise"
+            app:layout_constraintStart_toStartOf="@+id/iv_sunrise"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_sunset"
+            app:layout_constraintEnd_toEndOf="@+id/iv_sunrise"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            tools:text="@tools:sample/date/hhmm" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_sunset"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="@dimen/activity_padding"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_sunrise"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_sunrise"
+            app:layout_constraintTop_toTopOf="@+id/iv_sunrise"
+            app:srcCompat="@drawable/ic_sunset_anim"
+            app:tint="@color/yellow_sunset" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_sunset"
+            android:textAppearance="@style/MyTextAppearance.SmallCardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/activity_padding"
+            android:layout_marginEnd="@dimen/activity_padding"
+            app:layout_constraintTop_toTopOf="@+id/tv_sunrise"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_sunrise"
+            app:layout_constraintEnd_toEndOf="@+id/iv_sunset"
+            app:layout_constraintStart_toStartOf="@+id/iv_sunset"
+            tools:text="@tools:sample/date/hhmm" />
+
+    </android.support.constraint.ConstraintLayout>

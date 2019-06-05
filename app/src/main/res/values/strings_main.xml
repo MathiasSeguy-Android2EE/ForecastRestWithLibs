@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="main_temperature">%.1f°C</string>
+    <string name="main_temperature_min">%.1f°C</string>
+    <string name="main_temperature_max">%.1f°C</string>
+    <string name="main_humidity">%d</string>
+    <string name="main_pressure">%.1fhPa</string>
+
+</resources>

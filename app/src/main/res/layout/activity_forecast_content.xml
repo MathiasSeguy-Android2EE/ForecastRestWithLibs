@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/lil_main_forecast"
+    tools:context="com.android2ee.formation.restservice.sax.forecastyahoo.withlibs.view.forecast.ForecastWeatherActivity">
+
+    <include
+        layout="@layout/exception_layout"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.AppCompatTextView
+    android:id="@+id/txvEmptyCase"
+    android:textAppearance="@style/MyTextAppearance.Main.Primary"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/no_forecast_for_this_city"
+    android:gravity="center"
+    android:visibility="gone"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_forecast"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/activity_forecast_cardview_item"/>
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

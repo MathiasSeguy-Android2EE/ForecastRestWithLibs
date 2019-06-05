@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <include layout="@layout/exception_layout" />
+
+    
+    <LinearLayout
+        android:id="@+id/lil_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_padding" >
+
+        <EditText
+            android:id="@+id/edt_citySearchedName"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/city_act_edt_hint"
+            android:imeActionLabel="@string/city_act_edt_ime"
+            android:imeActionId="@+id/edt_citySearchedName_ime"
+            android:inputType="textCapWords" />
+
+        <Button
+            android:id="@+id/btn_search_city"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_search_transition" />
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txvEmptyCase"
+        android:textAppearance="@style/MyTextAppearance.Main.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_city_found"
+        android:gravity="center"
+        android:visibility="gone"/>
+    <ListView
+        android:id="@+id/lsvCityList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/colorDivider"
+        android:dividerHeight="3.0sp"
+        android:drawSelectorOnTop="true"
+        android:transcriptMode="disabled" />
+
+</LinearLayout>

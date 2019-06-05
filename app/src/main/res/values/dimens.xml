@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_small_margin">4dp</dimen>
+    <dimen name="activity_vertical_small_margin">4dp</dimen>
+    <dimen name="activity_horizontal_xsmall_margin">2dp</dimen>
+    <dimen name="activity_vertical_xsmall_margin">2dp</dimen>
+    <dimen name="activity_padding">5dp</dimen>
+    <dimen name="buttonSize">12dp</dimen>
+    <dimen name="corner_button_Size">5dp</dimen>
+    <dimen name="cardview_sys_margin">8dp</dimen>
+
+    <dimen name="text_size_title">28sp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="movbarBarHeight">3dp</dimen>
+    <dimen name="movbarBottomPadding">3dp</dimen>
+    <integer name="movbarBackgroundAlpha">122</integer>
+    <integer name="movbarAnimationDuration">1000</integer>
+    <integer name="movbarEndingAnimationDuration">500</integer>
+
+    <color name="movbarBackgroundColor">@color/colorPrimary</color>
+    <color name="movbarMainColor">@color/colorPrimary</color>
+</resources>
